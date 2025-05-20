@@ -1,12 +1,14 @@
 import type { Metadata } from "next";
-import { Inter } from "next/font/google";
+import { Inter, Playfair_Display } from "next/font/google";
 import "./globals.css";
+import styles from "./layout.module.css";
 
-const inter = Inter({ subsets: ["latin"] });
+const inter = Inter({ subsets: ["latin"], variable: "--font-sans" });
+const playfair = Playfair_Display({ subsets: ["latin"], variable: "--font-heading" });
 
 export const metadata: Metadata = {
   title: "Interactive Timeline",
-  description: "An interactive timeline application built with Next.js",
+  description: "A beautiful interactive timeline of historical events",
 };
 
 export default function RootLayout({
@@ -15,8 +17,8 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className="h-full">
-      <body className={`${inter.className} h-full antialiased`}>{children}</body>
+    <html lang="en" className={`${inter.variable} ${playfair.variable}`}>
+      <body className={styles.root}>{children}</body>
     </html>
   );
 }
