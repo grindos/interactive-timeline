@@ -1,21 +1,50 @@
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Source+Sans+3:wght@300;400;500;600&display=swap');
+
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  /* Main colors */
+  --background: #faf6f1;
+  --foreground: #2c1810;
+  --accent: #8b4513;
+  --accent-light: #d4a76a;
+  --timeline-line: #d4a76a;
+  --timeline-dot: #8b4513;
+  --card-bg: #ffffff;
+  --card-border: #e8d5c4;
+  --card-shadow: rgba(139, 69, 19, 0.1);
+  
+  /* Typography */
+  --font-heading: 'Playfair Display', serif;
+  --font-body: 'Source Sans 3', sans-serif;
 }
 
 @media (prefers-color-scheme: dark) {
   :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+    --background: #1a120b;
+    --foreground: #f5e6d3;
+    --accent: #d4a76a;
+    --accent-light: #8b4513;
+    --timeline-line: #8b4513;
+    --timeline-dot: #d4a76a;
+    --card-bg: #2c1810;
+    --card-border: #4a2c1a;
+    --card-shadow: rgba(0, 0, 0, 0.3);
   }
 }
 
 body {
   background: var(--background);
   color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: var(--font-body);
   margin: 0;
   padding: 0;
+  line-height: 1.6;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-heading);
+  font-weight: 600;
+  color: var(--foreground);
+  line-height: 1.3;
 }
 
 * {

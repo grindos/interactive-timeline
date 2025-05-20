@@ -3,6 +3,7 @@
   width: 100vw;
   height: 100vh;
   overflow: hidden;
+  background-color: var(--background);
 }
 
 .timelineWrapper {
@@ -24,7 +25,7 @@
   left: 0;
   right: 0;
   height: 2px;
-  background-color: #e5e7eb;
+  background-color: var(--timeline-line);
   transform: translateY(-50%);
 }
 
@@ -66,6 +67,6 @@
   left: 50%;
   width: 2px;
   height: 2rem;
-  background-color: #e5e7eb;
+  background-color: var(--timeline-line);
   transform: translateX(-50%);
 } 

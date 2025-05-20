@@ -4,5 +4,6 @@
   width: 12px;
   height: 12px;
   border-radius: 50%;
-  background-color: #3b82f6;
+  background-color: var(--timeline-dot);
+  box-shadow: 0 0 0 4px var(--background);
 } 
