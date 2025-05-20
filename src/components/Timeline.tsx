@@ -1,7 +1,7 @@
 'use client';
 
 import type { FC } from 'react';
-import { useState } from 'react';
+import { useCallback, useMemo, useState } from 'react';
 import dayjs from 'dayjs';
 import TimelineCircle from './TimelineCircle';
 import TimelineEventCard from './TimelineEventCard';
@@ -26,6 +26,30 @@ const Timeline: FC<TimelineProps> = ({ events }) => {
     dayjs(a.date).valueOf() - dayjs(b.date).valueOf()
   );
 
+  const handleMouseEnter = useCallback((event: TimelineEvent) => {
+    setHoveredEvent(event);
+  }, []);
+
+  const handleMouseLeave = useCallback(() => {
+    setHoveredEvent(null);
+  }, []);
+
+  const renderedEvents = useMemo(() => {
+    return sortedEvents.map((event, index) => (
+      <div key={event.id} className={styles.eventItem}>
+        <TimelineEventCard
+          event={event}
+          index={index}
+          isHovered={hoveredEvent?.id === event.id}
+          onMouseEnter={() => handleMouseEnter(event)}
+          onMouseLeave={handleMouseLeave}
+        />
+        <div className={styles.connectingLine} />
+        <TimelineCircle index={index} />
+      </div>
+    ));
+  }, [sortedEvents, hoveredEvent, handleMouseEnter, handleMouseLeave]);
+
   return (
     <div className={styles.timelineContainer}>
       <div className={styles.timelineWrapper}>
@@ -36,19 +60,7 @@ const Timeline: FC<TimelineProps> = ({ events }) => {
           {/* Events container */}
           <div className={styles.eventsContainer}>
             <div className={styles.eventsList}>
-              {sortedEvents.map((event, index) => (
-                <div key={event.id} className={styles.eventItem}>
-                  <TimelineEventCard
-                    event={event}
-                    index={index}
-                    isHovered={hoveredEvent?.id === event.id}
-                    onMouseEnter={() => setHoveredEvent(event)}
-                    onMouseLeave={() => setHoveredEvent(null)}
-                  />
-                  <div className={styles.connectingLine} />
-                  <TimelineCircle index={index} />
-                </div>
-              ))}
+              {renderedEvents}
             </div>
           </div>
         </div>
@@ -57,4 +69,4 @@ const Timeline: FC<TimelineProps> = ({ events }) => {
   );
 };
 
-export default Timeline; 
+export default Timeline;

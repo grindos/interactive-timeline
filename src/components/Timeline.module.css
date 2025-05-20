@@ -11,6 +11,7 @@
   flex: 1;
   align-items: center;
   justify-content: center;
+  overflow: hidden;
 }
 
 .timelineInner {
@@ -31,6 +32,7 @@
   width: 100%;
   overflow-x: auto;
   padding: 2rem 0;
+  -webkit-overflow-scrolling: touch;
 }
 
 .eventsContainer::-webkit-scrollbar {
@@ -48,6 +50,7 @@
   gap: 2rem;
   padding: 0 2rem;
   align-items: center;
+  min-width: max-content;
 }
 
 .eventItem {
