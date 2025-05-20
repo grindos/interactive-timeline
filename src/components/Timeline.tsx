@@ -5,6 +5,7 @@ import { useState } from 'react';
 import dayjs from 'dayjs';
 import TimelineCircle from './TimelineCircle';
 import TimelineEventCard from './TimelineEventCard';
+import styles from './Timeline.module.css';
 
 interface TimelineEvent {
   id: string;
@@ -26,18 +27,17 @@ const Timeline: FC<TimelineProps> = ({ events }) => {
   );
 
   return (
-    <div className="relative w-screen h-screen">
-      {/* Timeline container */}
-      <div className="absolute top-1/2 left-0 right-0 transform -translate-y-1/2">
-        <div className="relative">
+    <div className={styles.timelineContainer}>
+      <div className={styles.timelineWrapper}>
+        <div className={styles.timelineInner}>
           {/* Main timeline line */}
-          <div className="absolute top-1/2 left-0 right-0 h-0.5 bg-gray-200" />
+          <div className={styles.timelineLine} />
 
-          {/* Events and dots container */}
-          <div className="relative overflow-x-auto [&::-webkit-scrollbar]:hidden [-ms-overflow-style:none] [scrollbar-width:none]">
-            <div className="flex space-x-8 min-w-max px-4">
+          {/* Events container */}
+          <div className={styles.eventsContainer}>
+            <div className={styles.eventsList}>
               {sortedEvents.map((event, index) => (
-                <div key={event.id} className="relative flex flex-col items-center">
+                <div key={event.id} className={styles.eventItem}>
                   <TimelineEventCard
                     event={event}
                     index={index}
@@ -45,10 +45,7 @@ const Timeline: FC<TimelineProps> = ({ events }) => {
                     onMouseEnter={() => setHoveredEvent(event)}
                     onMouseLeave={() => setHoveredEvent(null)}
                   />
-
-                  {/* Vertical connecting line */}
-                  <div className="absolute top-0 left-1/2 w-0.5 h-8 bg-gray-200 transform -translate-x-1/2" />
-
+                  <div className={styles.connectingLine} />
                   <TimelineCircle index={index} />
                 </div>
               ))}

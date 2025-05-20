@@ -3,6 +3,7 @@
 import type { FC } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import dayjs from 'dayjs';
+import styles from './TimelineEventCard.module.css';
 
 interface TimelineEvent {
   id: string;
@@ -32,28 +33,27 @@ const TimelineEventCard: FC<TimelineEventCardProps> = ({
       initial={{ opacity: 0, y: -20 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ delay: index * 0.1 }}
-      className="relative mb-8"
+      className={styles.cardWrapper}
       onMouseEnter={onMouseEnter}
       onMouseLeave={onMouseLeave}
     >
       <motion.div
-        className={`bg-white p-4 rounded-lg shadow-lg border border-gray-200 w-64
-          ${isHovered ? 'ring-2 ring-blue-500' : ''}`}
+        className={isHovered ? styles.cardHovered : styles.card}
         whileHover={{ scale: 1.02 }}
         transition={{ type: 'spring', stiffness: 300 }}
       >
-        <h3 className="text-lg font-semibold text-gray-900">{event.title}</h3>
-        <time className="text-sm text-gray-500">
+        <h3 className={styles.title}>{event.title}</h3>
+        <time className={styles.date}>
           {dayjs(event.date).format('MMMM D, YYYY')}
         </time>
-        <div className="mt-2 h-[1.5rem]">
+        <div className={styles.descriptionContainer}>
           <AnimatePresence>
             {isHovered && (
               <motion.p
                 initial={{ opacity: 0, height: 0 }}
                 animate={{ opacity: 1, height: 'auto' }}
                 exit={{ opacity: 0, height: 0 }}
-                className="text-gray-600"
+                className={styles.description}
               >
                 {event.description}
               </motion.p>

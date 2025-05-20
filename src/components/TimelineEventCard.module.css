@@ -1,0 +1,39 @@
+.cardWrapper {
+  position: relative;
+  margin-bottom: 2rem;
+}
+
+.card {
+  background-color: white;
+  padding: 1rem;
+  border-radius: 0.5rem;
+  box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
+  border: 1px solid #e5e7eb;
+  width: 16rem;
+}
+
+.cardHovered {
+  composes: card;
+  outline: 2px solid #3b82f6;
+  outline-offset: 2px;
+}
+
+.title {
+  font-size: 1.125rem;
+  font-weight: 600;
+  color: #111827;
+}
+
+.date {
+  font-size: 0.875rem;
+  color: #6b7280;
+}
+
+.descriptionContainer {
+  margin-top: 0.5rem;
+  height: 1.5rem;
+}
+
+.description {
+  color: #4b5563;
+} 

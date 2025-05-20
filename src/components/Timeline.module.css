@@ -1,0 +1,71 @@
+.timelineContainer {
+  position: relative;
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
+}
+
+.timelineWrapper {
+  position: absolute;
+  top: 50%;
+  left: 0;
+  right: 0;
+  transform: translateY(-50%);
+}
+
+.timelineInner {
+  position: relative;
+  width: 100%;
+}
+
+.timelineLine {
+  position: absolute;
+  top: 50%;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background-color: #e5e7eb;
+  transform: translateY(-50%);
+}
+
+.eventsContainer {
+  position: relative;
+  width: 100%;
+  overflow-x: auto;
+  padding: 2rem 0;
+}
+
+.eventsContainer::-webkit-scrollbar {
+  display: none;
+}
+
+.eventsContainer {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+.eventsList {
+  display: inline-flex;
+  flex-direction: row;
+  gap: 2rem;
+  padding: 0 2rem;
+  align-items: center;
+}
+
+.eventItem {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  flex-shrink: 0;
+}
+
+.connectingLine {
+  position: absolute;
+  top: 0;
+  left: 50%;
+  width: 2px;
+  height: 2rem;
+  background-color: #e5e7eb;
+  transform: translateX(-50%);
+} 
